@@ -30,10 +30,11 @@ def foo_factory_wrong_signature() -> Foo:
 
 
 if __name__ == "__main__":
+    # Correct useage; no static-type errors.
     res1 = foo_client(lambda foo_param: FooImpl(foo_param))
     res2 = foo_client(foo_factory_correct_signature)
 
-    # Static type checking errors not caught by pycharm
+    # Static type checking errors not caught by pycharm.
     # These are caught by mypy.
     res3 = foo_client(lambda: FooImpl("foo_param"))
     res4 = foo_client(foo_factory_wrong_signature)
